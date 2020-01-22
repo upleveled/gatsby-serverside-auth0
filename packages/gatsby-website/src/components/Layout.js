@@ -5,7 +5,7 @@ import queryString from 'query-string';
 
 import FadingOverlayMessage from './FadingOverlayMessage';
 import Header from './Header';
-import './layout.css';
+import './Layout.css';
 
 const Layout = ({ children, location = {} }) => {
   // For Auth0 messages passed over the query string in the URL
