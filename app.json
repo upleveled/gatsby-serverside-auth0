@@ -1,0 +1,31 @@
+{
+  "name": "Gatsby + Server-side Auth0 on Heroku",
+  "description": "A barebones starter application for serving Gatsby static files behind server-side Auth0.",
+  "repository": "https://github.com/karlhorky/gatsby-serverside-auth0",
+  "logo": "https://avatars1.githubusercontent.com/u/2824157?v=3&s=200",
+  "keywords": ["node", "auth0"],
+  "env": {
+    "AUTH0_DOMAIN": {
+      "description": "Your Auth0 Domain",
+      "value": "YOUR_NAMESPACE.auth0.com"
+    },
+    "AUTH0_CLIENT_ID": {
+      "description": "Your Auth0 Client Id."
+    },
+    "AUTH0_CLIENT_SECRET": {
+      "description": "Your Auth0 Client Secret."
+    },
+    "AUTH0_CALLBACK_URL": {
+      "description": "The allowable callback URL configured in Auth0. Either specify a Heroku app name above or update after the app is created.",
+      "value": "https://YOUR-HEROKU-APP-NAME-ABOVE.herokuapp.com/callback"
+    },
+    "AUTH0_SCOPE": {
+      "description": "Your Connected App's Consumer Secret.",
+      "value": "openid"
+    },
+    "EXPRESS_SESSION_SECRET": {
+      "description": "The secret used to sign your Express session.",
+      "value": "CHANGE THIS SECRET"
+    }
+  }
+}

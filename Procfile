@@ -1,0 +1,1 @@
+web: yarn workspace @karlhorky/gatsby-serverside-auth-server start
