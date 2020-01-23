@@ -116,7 +116,7 @@ function pageToWebPaths(page) {
   // - .mdx
   let pageWithoutIndex = page.replace(/((\/)?index)?\.mdx$/, '');
   // Add a slash, but only for non-root paths
-  if (pageWithoutIndex !== '') pageWithoutIndex + '/';
+  if (pageWithoutIndex !== '') pageWithoutIndex += '/';
   return [pageWithoutIndex, pageWithoutIndex + 'index.html'];
 }
 
