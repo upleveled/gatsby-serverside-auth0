@@ -96,13 +96,39 @@ const {
   namedChunkGroups,
 } = require('../gatsby-website/public/webpack.stats.json');
 
+function pageToWebpackFormat(page) {
+  // Replace slashes and periods with hyphens
+  return page.replace(/(\/|\.)/g, '-');
+}
+
+function pageToGatsbyPageDataPath(page) {
+  // Strip the /index.mdx at the end of the page
+  // If it's the index, just strip the .mdx
+  return page.replace(/(\/index)?\.mdx$/, '');
+}
+
+function pageToWebPaths(page) {
+  // Strip the index.mdx at the end of the page
+  let pageWithoutIndex = page.replace(/(\/)?index\.mdx$/, '');
+  // Add a slash, but only for non-root paths
+  if (pageWithoutIndex !== '') pageWithoutIndex + '/';
+  return [pageWithoutIndex, pageWithoutIndex + 'index.html'];
+}
+
 function getPathsForPages(pages) {
   return (
     pages
-      .map(page => [
-        ...namedChunkGroups[`component---src-pages-${page}-mdx`].assets,
-        `page-data/${page}/page-data.json`,
-      ])
+      .map(page => {
+        return [
+          // All asset paths from the webpack manifest
+          ...namedChunkGroups[
+            `component---src-pages-${pageToWebpackFormat(page)}`
+          ].assets,
+          // All of the Gatsby page-data.json files
+          `page-data/${pageToGatsbyPageDataPath(page)}/page-data.json`,
+          ...pageToWebPaths(page),
+        ];
+      })
       // Flatten out the extra level of array nesting
       .flat()
       .concat(
@@ -110,23 +136,23 @@ function getPathsForPages(pages) {
         ...namedChunkGroups.app.assets,
         'page-data/app-data.json',
       )
-      // Only JavaScript files
-      .filter(assetPath => assetPath.match(/.(js|json)$/))
+      .filter(
+        assetPath =>
+          // Root
+          assetPath === '' ||
+          // Only paths ending with js, json, html and slashes
+          assetPath.match(/(\.(html|js|json)|\/)$/),
+      )
       // Add a leading slash to make a root-relative path
       // (to match Express' req.url)
       .map(assetPath => '/' + assetPath)
   );
 }
 
-const allowedWebpackAssetPaths = getPathsForPages([
-  'index', // src/pages/index.mdx
-]);
+const allowedWebpackAssetPaths = getPathsForPages(['index.mdx']);
 
 function isAllowedPath(path) {
   const pathWithoutQuery = path.replace(/^([^?]+).*$/, '$1');
-
-  // Allow access to the root path
-  if (pathWithoutQuery === '/') return true;
 
   // Allow access to the manifest
   if (pathWithoutQuery === '/manifest.webmanifest') return true;
