@@ -96,25 +96,31 @@ const {
   namedChunkGroups,
 } = require('../gatsby-website/public/webpack.stats.json');
 
-function getPathsForPage(page) {
-  return [
-    ...namedChunkGroups[`component---src-pages-${page}-mdx`].assets,
-    `page-data/${page}/page-data.json`,
-  ];
+function getPathsForPages(pages) {
+  return (
+    pages
+      .map(page => [
+        ...namedChunkGroups[`component---src-pages-${page}-mdx`].assets,
+        `page-data/${page}/page-data.json`,
+      ])
+      // Flatten out the extra level of array nesting
+      .flat()
+      .concat(
+        // Everything general for the app
+        ...namedChunkGroups.app.assets,
+        'page-data/app-data.json',
+      )
+      // Only JavaScript files
+      .filter(assetPath => assetPath.match(/.(js|json)$/))
+      // Add a leading slash to make a root-relative path
+      // (to match Express' req.url)
+      .map(assetPath => '/' + assetPath)
+  );
 }
 
-const allowedWebpackJsAssetPaths = [
-  // Everything general for the app
-  ...namedChunkGroups.app.assets,
-  'page-data/app-data.json',
-  // Everything for the index page
-  ...getPathsForPage('index'),
-]
-  // Only JavaScript files
-  .filter(assetPath => assetPath.match(/.(js|json)$/))
-  // Add a leading slash to make a root-relative path
-  // (to match Express' req.url)
-  .map(assetPath => '/' + assetPath);
+const allowedWebpackAssetPaths = getPathsForPages([
+  'index', // src/pages/index.mdx
+]);
 
 function isAllowedPath(path) {
   const pathWithoutQuery = path.replace(/^([^?]+).*$/, '$1');
@@ -135,7 +141,7 @@ function isAllowedPath(path) {
     }
   }
 
-  return allowedWebpackJsAssetPaths.includes(pathWithoutQuery);
+  return allowedWebpackAssetPaths.includes(pathWithoutQuery);
 }
 
 app.use(function secured(req, res, next) {
