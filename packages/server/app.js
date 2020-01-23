@@ -125,8 +125,6 @@ function isAllowedPath(path) {
   // Allow access to the manifest
   if (pathWithoutQuery === '/manifest.webmanifest') return true;
 
-  console.log('testing', pathWithoutQuery);
-
   // Allow access to images within static and icons
   if (pathWithoutQuery.endsWith('png')) {
     if (
