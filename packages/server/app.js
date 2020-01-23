@@ -76,16 +76,73 @@ if (app.get('env') === 'production') {
 
 app.use('/', authRouter);
 
+// Old solution:
 // Regular expression to match allowed assets related
 // to src/pages/index.mdx in the Gatsby website.
 //
 // Trying to navigate to assets related to src/pages/page-2.mdx
 // will return an "Access denied."
-const allowedGatsbyWebsiteUrls = /^(\/|\/(webpack-runtime|app|styles|commons|component---src-pages-index-mdx)-[a-z0-9]+\.js|\/page-data\/(index\/)?(page|app)-data.json|\/(static|icons)\/.+\.png(\?v=[a-z0-9]+)?)(\?[^/]+)?$/;
+// const allowedGatsbyWebsiteUrls = /^(\/|\/(webpack-runtime|app|styles|commons|component---src-pages-index-mdx)-[a-z0-9]+\.js|\/page-data\/(index\/)?(page|app)-data.json|\/(static|icons)\/.+\.png(\?v=[a-z0-9]+)?)(\?[^/]+)?$/;
+
+// New solution:
+
+// Require the Gatsby asset manifest from the build
+// to get paths to all assets that are required by
+// each "named chunk group" (each named chunk group
+// corresponds to a page).
+//
+// Ref: https://github.com/gatsbyjs/gatsby/issues/20745#issuecomment-577685950
+const {
+  namedChunkGroups,
+} = require('../gatsby-website/public/webpack.stats.json');
+
+function getPathsForPage(page) {
+  return [
+    ...namedChunkGroups[`component---src-pages-${page}-mdx`].assets,
+    `page-data/${page}/page-data.json`,
+  ];
+}
+
+const allowedWebpackJsAssetPaths = [
+  // Everything general for the app
+  ...namedChunkGroups.app.assets,
+  'page-data/app-data.json',
+  // Everything for the index page
+  ...getPathsForPage('index'),
+]
+  // Only JavaScript files
+  .filter(assetPath => assetPath.match(/.(js|json)$/))
+  // Add a leading slash to make a root-relative path
+  // (to match Express' req.url)
+  .map(assetPath => '/' + assetPath);
+
+function isAllowedPath(path) {
+  const pathWithoutQuery = path.replace(/^([^?]+).*$/, '$1');
+
+  // Allow access to the root path
+  if (pathWithoutQuery === '/') return true;
+
+  // Allow access to the manifest
+  if (pathWithoutQuery === '/manifest.webmanifest') return true;
+
+  console.log('testing', pathWithoutQuery);
+
+  // Allow access to images within static and icons
+  if (pathWithoutQuery.endsWith('png')) {
+    if (
+      pathWithoutQuery.startsWith('/static/') ||
+      pathWithoutQuery.startsWith('/icons/')
+    ) {
+      return true;
+    }
+  }
+
+  return allowedWebpackJsAssetPaths.includes(pathWithoutQuery);
+}
 
 app.use(function secured(req, res, next) {
   if (req.user) {
-    if (!req.url.match(allowedGatsbyWebsiteUrls)) {
+    if (!isAllowedPath(req.url)) {
       res.status(403);
       res.send('Access denied.');
       return;
