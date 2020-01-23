@@ -108,8 +108,13 @@ function pageToGatsbyPageDataPath(page) {
 }
 
 function pageToWebPaths(page) {
-  // Strip the index.mdx at the end of the page
-  let pageWithoutIndex = page.replace(/(\/)?index\.mdx$/, '');
+  // Strip one of the following postfixes at the
+  // end of the page, depending on what exists
+  // in the path
+  // - /index.mdx
+  // - index.mdx
+  // - .mdx
+  let pageWithoutIndex = page.replace(/((\/)?index)?\.mdx$/, '');
   // Add a slash, but only for non-root paths
   if (pageWithoutIndex !== '') pageWithoutIndex + '/';
   return [pageWithoutIndex, pageWithoutIndex + 'index.html'];
@@ -149,7 +154,7 @@ function getPathsForPages(pages) {
   );
 }
 
-const allowedWebpackAssetPaths = getPathsForPages(['index.mdx']);
+const allowedWebpackAssetPaths = getPathsForPages(['index.mdx', 'page-3.mdx']);
 
 function isAllowedPath(path) {
   const pathWithoutQuery = path.replace(/^([^?]+).*$/, '$1');
