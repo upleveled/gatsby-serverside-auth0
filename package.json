@@ -13,6 +13,10 @@
     "packages/*"
   ],
   "resolutions": {
+    "**/acorn-globals/acorn": "6.4.1",
+    "**/webpack/acorn": "6.4.1",
+    "**/espree/acorn": "7.1.1",
+    "**/mkdirp/minimist": "0.2.1",
     "terser-webpack-plugin": "1.4.3"
   }
 }
