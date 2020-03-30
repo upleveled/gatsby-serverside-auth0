@@ -15,8 +15,6 @@
   "resolutions": {
     "**/acorn-globals/acorn": "6.4.1",
     "**/webpack/acorn": "6.4.1",
-    "**/espree/acorn": "7.1.1",
-    "mkdirp": "0.5.3",
-    "terser-webpack-plugin": "1.4.3"
+    "**/espree/acorn": "7.1.1"
   }
 }
