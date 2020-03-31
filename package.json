@@ -13,8 +13,8 @@
     "packages/*"
   ],
   "resolutions": {
-    "**/acorn-globals/acorn": "6.4.1",
-    "**/webpack/acorn": "6.4.1",
+    "**/acorn-globals/acorn": "7.1.1",
+    "**/webpack/acorn": "7.1.1",
     "**/espree/acorn": "7.1.1"
   }
 }
