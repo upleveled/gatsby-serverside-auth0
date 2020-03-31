@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "devDependencies": {
-    "prettier": "1.19.1"
+    "prettier": "2.0.2"
   },
   "scripts": {
     "heroku-postbuild": "yarn workspace @karlhorky/gatsby-serverside-auth-website build",
