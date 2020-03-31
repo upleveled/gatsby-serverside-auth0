@@ -2,9 +2,6 @@
   "name": "@karlhorky/gatsby-serverside-auth",
   "private": true,
   "version": "1.0.0",
-  "devDependencies": {
-    "prettier": "1.19.1"
-  },
   "scripts": {
     "heroku-postbuild": "yarn workspace @karlhorky/gatsby-serverside-auth-website build",
     "start": "yarn workspace @karlhorky/gatsby-serverside-auth-website start"
