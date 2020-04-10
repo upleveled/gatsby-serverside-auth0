@@ -1,13 +1,5 @@
 {
   "extends": [
-    "config:base"
-  ],
-  "packageRules": [
-    {
-      "depTypeList": ["devDependencies", "dependencies"],
-      "updateTypes": ["patch", "minor"],
-      "groupName": "dependencies (non-major)"
-    }
-  ],
-  "schedule": "on friday and saturday and sunday"
+    "github>karlhorky/renovate-config"
+  ]
 }
