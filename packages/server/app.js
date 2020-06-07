@@ -20,7 +20,7 @@ const strategy = new Auth0Strategy(
     callbackURL:
       process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback',
   },
-  function(accessToken, refreshToken, extraParams, profile, done) {
+  function (accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
@@ -31,11 +31,11 @@ const strategy = new Auth0Strategy(
 passport.use(strategy);
 
 // You can use this section to keep a smaller payload
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 
@@ -63,7 +63,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 if (app.get('env') === 'production') {
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     if (req.secure) {
       // Request made via https, so do no special handling
       next();
@@ -123,7 +123,7 @@ function pageToWebPaths(page) {
 function getPathsForPages(pages) {
   return (
     pages
-      .map(page => {
+      .map((page) => {
         return [
           // All asset paths from the webpack manifest
           ...namedChunkGroups[
@@ -142,7 +142,7 @@ function getPathsForPages(pages) {
         'page-data/app-data.json',
       )
       .filter(
-        assetPath =>
+        (assetPath) =>
           // Root
           assetPath === '' ||
           // Only paths ending with js, json, html and slashes
@@ -150,7 +150,7 @@ function getPathsForPages(pages) {
       )
       // Add a leading slash to make a root-relative path
       // (to match Express' req.url)
-      .map(assetPath => '/' + assetPath)
+      .map((assetPath) => '/' + assetPath)
   );
 }
 
@@ -194,7 +194,7 @@ app.use(function secured(req, res, next) {
 app.use(express.static(path.join(__dirname, '..', 'gatsby-website', 'public')));
 
 // Catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -205,7 +205,7 @@ app.use(function(req, res, next) {
 // Development error handler
 // Will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.send(`<pre>${err.stack || JSON.stringify(err)}</pre>`);
   });
@@ -213,7 +213,7 @@ if (app.get('env') === 'development') {
 
 // Production error handler
 // No stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.send(`Error!<br><br>${err.message}`);
 });

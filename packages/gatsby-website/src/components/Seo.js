@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
 
 function Seo({ description, lang, meta, keywords, title }) {
   return (
     <StaticQuery
       query={detailsQuery}
-      render={data => {
+      render={(data) => {
         const metaDescription =
-          description || data.site.siteMetadata.description
+          description || data.site.siteMetadata.description;
         return (
           <Helmet
             htmlAttributes={{
@@ -57,21 +57,21 @@ function Seo({ description, lang, meta, keywords, title }) {
                       name: 'keywords',
                       content: keywords.join(', '),
                     }
-                  : []
+                  : [],
               )
               .concat(meta)}
           />
-        )
+        );
       }}
     />
-  )
+  );
 }
 
 Seo.defaultProps = {
   lang: 'en',
   meta: [],
   keywords: [],
-}
+};
 
 Seo.propTypes = {
   description: PropTypes.string,
@@ -79,9 +79,9 @@ Seo.propTypes = {
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
-}
+};
 
-export default Seo
+export default Seo;
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
@@ -93,4 +93,4 @@ const detailsQuery = graphql`
       }
     }
   }
-`
+`;

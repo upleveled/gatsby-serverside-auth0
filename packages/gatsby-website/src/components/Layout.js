@@ -22,7 +22,7 @@ const Layout = ({ children, location = {} }) => {
           }
         }
       `}
-      render={data => (
+      render={(data) => (
         <>
           <Header siteTitle={data.site.siteMetadata.title} />
           <FadingOverlayMessage message={message} />
