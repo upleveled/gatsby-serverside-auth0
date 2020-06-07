@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "yarn workspace @upleveled/gatsby-serverside-auth-website build",
-    "start": "yarn workspace @upleveled/gatsby-serverside-auth-website start"
+    "start": "yarn workspace @upleveled/gatsby-serverside-auth-server start"
   },
   "workspaces": [
     "packages/*"
