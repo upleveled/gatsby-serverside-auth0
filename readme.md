@@ -61,15 +61,17 @@ If there are any messages passed through the query string in the URL by Auth0, t
 
 ![Auth0 query string messages](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/09-auth0-query-string-messages.png)
 
-Finally, there is a rudimentary (regular expression-based!) access control for Gatsby static pages in the Express server.
-
-If the user tries to access any assets from the Gatsby website `src/pages/page-2.mdx` page, these will be denied:
+There is also rudimentary access control set up for Gatsby static pages in the Express server. It is configured to deny requests for any assets from the Gatsby website `src/pages/page-2.mdx` page:
 
 ![Access Denied on page 2](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/10-access-denied.png)
 
 This access control serves as a proof of concept - hopefully new tools will become available for Gatsby to improve this workflow:
 
 https://github.com/gatsbyjs/gatsby/issues/20745
+
+Finally, if the user visits any file that doesn't exist in the `gatsby-website/public` folder, the Gatsby 404 page will be displayed:
+
+![Gatsby 404 page](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/11-gatsby-404.png)
 
 Log out of the app by visiting the `/logout` route.
 
