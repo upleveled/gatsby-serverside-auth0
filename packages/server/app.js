@@ -4,21 +4,19 @@ const express = require('express');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const dotenv = require('dotenv');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
-const authRouter = require('./routes/auth');
 
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+const authRouter = require('./routes/auth');
+const config = require('./config');
 
 // Configure Passport to use Auth0
 const strategy = new Auth0Strategy(
   {
-    domain: process.env.AUTH0_DOMAIN,
-    clientID: process.env.AUTH0_CLIENT_ID,
-    clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    callbackURL:
-      process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback',
+    domain: config.AUTH0_DOMAIN,
+    clientID: config.AUTH0_CLIENT_ID,
+    clientSecret: config.AUTH0_CLIENT_SECRET,
+    callbackURL: config.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback',
   },
   function (accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
@@ -46,7 +44,7 @@ app.use(cookieParser());
 
 // config express-session
 const sess = {
-  secret: process.env.EXPRESS_SESSION_SECRET,
+  secret: config.EXPRESS_SESSION_SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,
