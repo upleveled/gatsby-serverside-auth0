@@ -77,7 +77,11 @@ function getPathsForPages(pages) {
   );
 }
 
-const allowedWebpackAssetPaths = getPathsForPages(['index.mdx', 'page-3.mdx']);
+const allowedWebpackAssetPaths = getPathsForPages([
+  'index.mdx',
+  '404.mdx',
+  'page-3.mdx',
+]);
 
 module.exports.isAllowedGatsbyPath = function isAllowedGatsbyPath(filePath) {
   const pathWithoutQuery = filePath.replace(/^([^?]+).*$/, '$1');
