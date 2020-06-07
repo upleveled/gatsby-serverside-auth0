@@ -156,8 +156,8 @@ function getPathsForPages(pages) {
 
 const allowedWebpackAssetPaths = getPathsForPages(['index.mdx', 'page-3.mdx']);
 
-function isAllowedPath(path) {
-  const pathWithoutQuery = path.replace(/^([^?]+).*$/, '$1');
+function isAllowedPath(filePath) {
+  const pathWithoutQuery = filePath.replace(/^([^?]+).*$/, '$1');
 
   // Allow access to the manifest
   if (pathWithoutQuery === '/manifest.webmanifest') return true;

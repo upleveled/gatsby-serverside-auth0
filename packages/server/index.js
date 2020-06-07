@@ -9,16 +9,16 @@ const server = http.createServer(app);
 server.listen(port);
 
 function normalizePort(val) {
-  const port = parseInt(val, 10);
+  const parsedPort = parseInt(val, 10);
 
-  if (isNaN(port)) {
+  if (isNaN(parsedPort)) {
     // named pipe
     return val;
   }
 
-  if (port >= 0) {
+  if (parsedPort >= 0) {
     // port number
-    return port;
+    return parsedPort;
   }
 
   return false;
@@ -31,6 +31,7 @@ server.on('error', function onError(error) {
 
   const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
+  /* eslint-disable no-fallthrough */
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
@@ -42,6 +43,7 @@ server.on('error', function onError(error) {
     default:
       throw error;
   }
+  /* eslint-enable no-fallthrough */
 });
 
 server.on('listening', function onListening() {

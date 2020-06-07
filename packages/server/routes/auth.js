@@ -21,13 +21,13 @@ router.get(
 
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
 router.get('/callback', function (req, res, next) {
-  passport.authenticate('auth0', function (err, user, info) {
-    if (err) {
-      return next(err);
+  passport.authenticate('auth0', function (auth0Error, user, info) {
+    if (auth0Error) {
+      return next(auth0Error);
     }
-    req.logIn(user, function (err) {
-      if (err) {
-        return next(err);
+    req.logIn(user, function (loginError) {
+      if (loginError) {
+        return next(loginError);
       }
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
@@ -50,14 +50,15 @@ router.get('/logout', (req, res) => {
   ) {
     returnTo += ':' + port;
   }
+
   const logoutURL = new url.URL(
     util.format('https://%s/logout', process.env.AUTH0_DOMAIN),
   );
-  const searchString = querystring.stringify({
-    client_id: process.env.AUTH0_CLIENT_ID,
+
+  logoutURL.search = querystring.stringify({
+    client_id: config.AUTH0_CLIENT_ID,
     returnTo: returnTo,
   });
-  logoutURL.search = searchString;
 
   res.redirect(logoutURL);
 });
