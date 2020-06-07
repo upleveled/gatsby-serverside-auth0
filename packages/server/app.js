@@ -7,7 +7,7 @@ const session = require('express-session');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 
-const authRouter = require('./routes/auth');
+const authRouter = require('./routes/authRouter');
 const config = require('./config');
 
 // Configure Passport to use Auth0
