@@ -6,6 +6,7 @@ const Header = ({ siteTitle }) => (
   <div
     style={{
       background: 'rebeccapurple',
+      color: 'white',
       marginBottom: '1.45rem',
     }}
   >
@@ -16,17 +17,22 @@ const Header = ({ siteTitle }) => (
         padding: '1.45rem 1.0875rem',
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+      <h1>{siteTitle}</h1>
+      <Link to="/" style={{ color: 'white' }}>
+        Home
+      </Link>
+      &nbsp; &nbsp;
+      <Link to="/page-2/" style={{ color: 'white' }}>
+        Page 2 (denied)
+      </Link>
+      &nbsp; &nbsp;
+      <Link to="/page-3/" style={{ color: 'white' }}>
+        Page 3 (allowed)
+      </Link>
+      &nbsp; &nbsp;
+      <Link to="/non-existent/" style={{ color: 'white' }}>
+        Non-existent (404)
+      </Link>
     </div>
   </div>
 );
