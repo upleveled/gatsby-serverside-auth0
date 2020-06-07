@@ -23,15 +23,19 @@ authRouter.get(
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
 authRouter.get('/callback', function (req, res, next) {
   passport.authenticate('auth0', function (auth0Error, user, info) {
-    if (auth0Error) {
-      return next(auth0Error);
-    }
+    if (auth0Error) return next(auth0Error);
+    if (!user) return res.redirect('/login');
+
     req.logIn(user, function (loginError) {
-      if (loginError) {
-        return next(loginError);
+      if (loginError) return next(loginError);
+
+      let returnTo;
+
+      if (req.session && req.session.returnTo) {
+        returnTo = req.session.returnTo;
+        delete req.session.returnTo;
       }
-      const returnTo = req.session.returnTo;
-      delete req.session.returnTo;
+
       res.redirect(returnTo || '/');
     });
   })(req, res, next);
@@ -42,7 +46,9 @@ authRouter.get('/logout', (req, res) => {
   req.logout();
 
   let returnTo = req.protocol + '://' + req.hostname;
+
   const port = req.connection.localPort;
+
   if (
     req.hostname === 'localhost' &&
     port !== undefined &&
@@ -61,7 +67,7 @@ authRouter.get('/logout', (req, res) => {
     returnTo: returnTo,
   });
 
-  res.redirect(logoutURL);
+  res.redirect(logoutURL.toString());
 });
 
 module.exports = authRouter;
