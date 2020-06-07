@@ -1,10 +1,10 @@
 {
-  "name": "@karlhorky/gatsby-serverside-auth",
+  "name": "@upleveled/gatsby-serverside-auth",
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "heroku-postbuild": "yarn workspace @karlhorky/gatsby-serverside-auth-website build",
-    "start": "yarn workspace @karlhorky/gatsby-serverside-auth-website start"
+    "build": "yarn workspace @upleveled/gatsby-serverside-auth-website build",
+    "start": "yarn workspace @upleveled/gatsby-serverside-auth-website start"
   },
   "workspaces": [
     "packages/*"

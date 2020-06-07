@@ -1,7 +1,7 @@
 {
   "name": "Gatsby + Server-side Auth0 on Heroku",
   "description": "A barebones starter application for serving Gatsby static files behind server-side Auth0.",
-  "repository": "https://github.com/karlhorky/gatsby-serverside-auth0",
+  "repository": "https://github.com/upleveled/gatsby-serverside-auth0",
   "logo": "https://avatars1.githubusercontent.com/u/2824157?v=3&s=200",
   "keywords": ["node", "auth0"],
   "env": {

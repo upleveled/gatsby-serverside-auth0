@@ -4,7 +4,7 @@ A starter template for server-side authentication of Gatsby static-site content 
 
 This does not use any client-only routes in Gatsby.
 
-Based off of [Auth0 + Node.js on Heroku](https://github.com/karlhorky/auth0-node-heroku).
+Based off of [Auth0 + Node.js on Heroku](https://github.com/upleveled/auth0-node-heroku).
 
 Illustration of problem area for https://github.com/gatsbyjs/gatsby/issues/20745.
 
@@ -13,17 +13,17 @@ Illustration of problem area for https://github.com/gatsbyjs/gatsby/issues/20745
 Setup for Auth0 is fast and easy:
 
 1. [Sign up for a free account at Auth0](https://auth0.com/), go to [the Dashboard](https://manage.auth0.com) and hit the **Create** button:
-   ![Auth0 Dashboard](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/01-auth0.png)
+   ![Auth0 Dashboard](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/01-auth0.png)
 2. Create an application with the "Regular Web Application" template:
-   ![Create Regular Web Application](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/02-auth0.png)
+   ![Create Regular Web Application](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/02-auth0.png)
 3. Go to the **Settings** tab and make a note of the **Domain**, **Client ID** and **Client Secret**. This information will be used for the Heroku setup.
-   ![Settings tab for application](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/03-auth0.png)
+   ![Settings tab for application](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/03-auth0.png)
 
 ## Set up Heroku
 
 Create a Heroku account at [Heroku - Sign up](https://signup.heroku.com/), and then click on this button:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/karlhorky/gatsby-serverside-auth0)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/upleveled/gatsby-serverside-auth0)
 
 This will set up a new application on your Heroku account using this repo as a template.
 
@@ -31,7 +31,7 @@ Choose your own app name, and use it in the `AUTH0_CALLBACK_URL` field.
 
 During setup you'll also be asked for some other environment variables, which is the information that we noted earlier in the Auth0 setup:
 
-![Fill in Heroku environment variables](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/04-heroku.png)
+![Fill in Heroku environment variables](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/04-heroku.png)
 
 After Heroku is set up, return to the Auth0 Settings page and enter the URL in the Allowed urls (replace **YOUR-APP** with the **App name** that you chose):
 
@@ -46,26 +46,26 @@ After Heroku is set up, return to the Auth0 Settings page and enter the URL in t
 
 It should appear like this:
 
-![Auth0 Callback URLs Configuration](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/05-auth0.png)
-![Auth0 Save Changes](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/06-auth0.png)
+![Auth0 Callback URLs Configuration](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/05-auth0.png)
+![Auth0 Save Changes](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/06-auth0.png)
 
 Now everything should be set up! If you visit the application URL in a browser, Auth0 will ask for you to log in to the application:
 
-![Auth0](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/07-auth0-login.png)
+![Auth0](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/07-auth0-login.png)
 
 After logging in, the Gatsby default starter homepage will be displayed:
 
-![App homepage](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/08-gatsby-starter-homepage.png)
+![App homepage](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/08-gatsby-starter-homepage.png)
 
 If there are any messages passed through the query string in the URL by Auth0, they will be displayed:
 
-![Auth0 query string messages](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/09-auth0-query-string-messages.png)
+![Auth0 query string messages](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/09-auth0-query-string-messages.png)
 
 Finally, there is a rudimentary (regular expression-based!) access control for Gatsby static pages in the Express server.
 
 If the user tries to access any assets from the Gatsby website `src/pages/page-2.mdx` page, these will be denied:
 
-![Access Denied on page 2](https://raw.githubusercontent.com/karlhorky/gatsby-serverside-auth0/master/.readme/10-access-denied.png)
+![Access Denied on page 2](https://raw.githubusercontent.com/upleveled/gatsby-serverside-auth0/master/.readme/10-access-denied.png)
 
 This access control serves as a proof of concept - hopefully new tools will become available for Gatsby to improve this workflow:
 
