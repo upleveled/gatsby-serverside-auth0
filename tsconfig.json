@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "lib": ["DOM", "esnext.asynciterable"],
+    "strict": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true
+  },
+  "include": ["packages/**/*"],
+  "exclude": [
+    "node_modules",
+    "packages/*/node_modules",
+    "packages/gatsby-website/.cache",
+    "packages/gatsby-website/public"
+  ]
+}

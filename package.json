@@ -8,5 +8,11 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "typescript": "3.9.5"
+  },
+  "resolutions": {
+    "@types/node": "13.13.10"
+  }
 }
