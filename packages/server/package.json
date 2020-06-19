@@ -21,7 +21,7 @@
     "express": "4.17.1",
     "express-session": "1.17.1",
     "http-errors": "1.7.3",
-    "klaw-sync": "^6.0.0",
+    "klaw-sync": "6.0.0",
     "memorystore": "1.6.2",
     "morgan": "1.10.0",
     "passport": "0.4.1",
