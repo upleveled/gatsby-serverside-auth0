@@ -13,6 +13,6 @@
     "typescript": "3.9.5"
   },
   "resolutions": {
-    "@types/node": "13.13.10"
+    "@types/node": "13.13.12"
   }
 }
