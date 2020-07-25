@@ -99,6 +99,12 @@ module.exports.isAllowedGatsbyPath = function isAllowedGatsbyPath(filePath) {
     }
   }
 
+  // Allow access to the static query results
+  // https://github.com/gatsbyjs/gatsby/pull/25723/files#diff-917ba78a52f29b1a1fe42be34d81fc83R64
+  if (pathWithoutQuery.match(/^\/static\/d\/\d+\.json$/)) {
+    return true;
+  }
+
   // Allow access to other favicons
   if (pathWithoutQuery.match(/^\/favicon(-32x32\.png|\.ico)$/)) {
     return true;
