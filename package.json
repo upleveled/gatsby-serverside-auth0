@@ -13,7 +13,6 @@
     "typescript": "4.0.2"
   },
   "resolutions": {
-    "@types/node": "13.13.15",
-    "jpeg-js": "0.4.1"
+    "@types/node": "13.13.15"
   }
 }
