@@ -2554,10 +2554,10 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@13.13.15", "@types/node@^8.5.7":
-  version "13.13.15"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.15.tgz#fe1cc3aa465a3ea6858b793fd380b66c39919766"
-  integrity sha512-kwbcs0jySLxzLsa2nWUAGOd/s21WU1jebrEdtzhsj1D4Yps1EOuyI1Qcu+FD56dL7NRNIJtDDjcqIG22NwkgLw==
+"@types/node@*", "@types/node@13.13.15", "@types/node@13.13.18", "@types/node@^8.5.7":
+  version "13.13.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.18.tgz#e932b06eb33294f5b97a67de3b820fc6f456ad1c"
+  integrity sha512-nru5D2PxzwzWyo3ocADAkzbc5H1KxVJMmX8oco9Fe5c+4vv6+MMp93wPq6ADqwHAwDtNH55eTCNGVaIZHZsAFQ==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
