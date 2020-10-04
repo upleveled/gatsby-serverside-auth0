@@ -45,7 +45,7 @@ function pageToWebPaths(page) {
 function getPathsForPages(pages) {
   return (
     pages
-      .map((page) => {
+      .flatMap((page) => {
         return [
           // All asset paths from the webpack manifest
           ...namedChunkGroups[
@@ -56,8 +56,6 @@ function getPathsForPages(pages) {
           ...pageToWebPaths(page),
         ];
       })
-      // Flatten out the extra level of array nesting
-      .flat()
       .concat(
         // Everything general for the app
         ...namedChunkGroups.app.assets,
