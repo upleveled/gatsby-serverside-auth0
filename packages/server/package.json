@@ -12,7 +12,7 @@
     "@types/express-session": "1.17.0",
     "@types/http-errors": "1.8.0",
     "@types/morgan": "1.9.1",
-    "@types/node": "13.13.21",
+    "@types/node": "13.13.25",
     "@types/passport-auth0": "1.0.4"
   },
   "dependencies": {
