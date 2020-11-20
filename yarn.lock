@@ -1946,10 +1946,10 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@13.13.30", "@types/node@13.13.31", "@types/node@^8.5.7":
-  version "13.13.30"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.30.tgz#1ed6e01e4ca576d5aec9cc802cc3bcf94c274192"
-  integrity sha512-HmqFpNzp3TSELxU/bUuRK+xzarVOAsR00hzcvM0TXrMlt/+wcSLa5q6YhTb6/cA6wqDCZLDcfd8fSL95x5h7AA==
+"@types/node@*", "@types/node@13.13.31", "@types/node@13.13.32", "@types/node@^8.5.7":
+  version "13.13.32"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.32.tgz#f0edd0fb57b3c9f6e64a0b3ddb1e0f729b6f71ce"
+  integrity sha512-sPBvDnrwZE1uePhkCEyI/qQlgZM5kePPAhHIFDWNsOrWBFRBOk3LKJYmVCLeLZlL9Ub/FzMJb31OTWCg2F+06g==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
