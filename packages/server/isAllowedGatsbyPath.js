@@ -66,10 +66,9 @@ function getPathsForPages(pages) {
       )
       .filter(
         (assetPath) =>
-          // Root
-          assetPath.name === undefined ||
+          assetPath === '' ||
           // Only paths ending with js, json, html and slashes
-          assetPath.name.match(/(\.(html|js|json)|\/)$/),
+          assetPath.match(/(\.(html|js|json)|\/)$/),
       )
       // Add a leading slash to make a root-relative path
       // (to match Express' req.url)
