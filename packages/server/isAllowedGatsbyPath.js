@@ -50,7 +50,7 @@ function getPathsForPages(pages) {
           // All asset paths from the webpack manifest
           ...namedChunkGroups[
             `component---src-pages-${pageToWebpackFormat(page)}`
-          ].assets,
+          ].assets.map((/** @type {{name: string}} */ { name }) => name),
           // All of the Gatsby page-data.json files
           `page-data/${pageToGatsbyPageDataPath(page)}/page-data.json`,
           ...pageToWebPaths(page),
@@ -58,16 +58,18 @@ function getPathsForPages(pages) {
       })
       .concat(
         // Everything general for the app
-        ...namedChunkGroups.app.assets,
+        ...namedChunkGroups.app.assets.map(
+          (/** @type {{name: string}} */ { name }) => name,
+        ),
         'page-data/404.html/page-data.json',
         'page-data/app-data.json',
       )
       .filter(
         (assetPath) =>
           // Root
-          assetPath === '' ||
+          assetPath.name === undefined ||
           // Only paths ending with js, json, html and slashes
-          assetPath.match(/(\.(html|js|json)|\/)$/),
+          assetPath.name.match(/(\.(html|js|json)|\/)$/),
       )
       // Add a leading slash to make a root-relative path
       // (to match Express' req.url)
