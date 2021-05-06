@@ -12,12 +12,12 @@
     "@types/express-session": "1.17.3",
     "@types/http-errors": "1.8.0",
     "@types/morgan": "1.9.2",
-    "@types/node": "14.14.43",
+    "@types/node": "14.14.44",
     "@types/passport-auth0": "1.0.4"
   },
   "dependencies": {
     "cookie-parser": "1.4.5",
-    "dotenv": "8.2.0",
+    "dotenv": "8.6.0",
     "express": "4.17.1",
     "express-session": "1.17.1",
     "http-errors": "1.8.0",
