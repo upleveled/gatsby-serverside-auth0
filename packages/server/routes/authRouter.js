@@ -1,8 +1,11 @@
+// eslint-disable-next-line unicorn/prefer-node-protocol
 const util = require('util');
+// eslint-disable-next-line unicorn/prefer-node-protocol
 const url = require('url');
 const passport = require('passport');
 const express = require('express');
 
+// eslint-disable-next-line unicorn/prefer-node-protocol
 const querystring = require('querystring');
 
 const config = require('../config');
@@ -22,7 +25,7 @@ authRouter.get(
 
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
 authRouter.get('/callback', function (req, res, next) {
-  passport.authenticate('auth0', function (auth0Error, user, info) {
+  passport.authenticate('auth0', function (auth0Error, user) {
     if (auth0Error) return next(auth0Error);
     if (!user) return res.redirect('/login');
 
@@ -31,7 +34,7 @@ authRouter.get('/callback', function (req, res, next) {
 
       let returnTo;
 
-      if (req.session && req.session.returnTo) {
+      if (req.session.returnTo) {
         returnTo = req.session.returnTo;
         delete req.session.returnTo;
       }
@@ -49,12 +52,7 @@ authRouter.get('/logout', (req, res) => {
 
   const port = req.connection.localPort;
 
-  if (
-    req.hostname === 'localhost' &&
-    port !== undefined &&
-    port !== 80 &&
-    port !== 443
-  ) {
+  if (req.hostname === 'localhost' && port !== 80 && port !== 443) {
     returnTo += ':' + port;
   }
 

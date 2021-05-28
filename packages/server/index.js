@@ -1,11 +1,14 @@
+// eslint-disable-next-line unicorn/prefer-node-protocol
 const path = require('path');
 
 const express = require('express');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const MemoryStore = require('memorystore')(session);
 const passport = require('passport');
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const Auth0Strategy = require('passport-auth0');
 const createError = require('http-errors');
 const klawSync = require('klaw-sync');
@@ -123,11 +126,7 @@ app.use(function secured(req, res, next) {
   // such as the URL below.
   //
   // http://localhost:3000/page-data/app-data.json
-  if (
-    req.session &&
-    typeof req.originalUrl === 'string' &&
-    req.originalUrl.endsWith('/')
-  ) {
+  if (typeof req.originalUrl === 'string' && req.originalUrl.endsWith('/')) {
     req.session.returnTo = req.originalUrl;
   }
 
@@ -139,6 +138,7 @@ app.use(function secured(req, res, next) {
 app.use(express.static(path.join(__dirname, '..', 'gatsby-website', 'public')));
 
 // Error handler
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use(function (err, req, res, next) {
   // Handle 404 (file not found) errors
   if (err.status === 404) {
