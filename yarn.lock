@@ -2354,28 +2354,28 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@reach/alert@0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@reach/alert/-/alert-0.15.3.tgz#c8b35a1c9e1e50495ca883fb666c210a3cdc7656"
-  integrity sha512-zfTYOj1jJQ2xoug/Vv9TRB1mGknXlyzKTEJbXRbR9TgIfBm74u/3OivY+wlwn2chFNLotsSo/K8ALPB08c7WEw==
+"@reach/alert@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@reach/alert/-/alert-0.16.0.tgz#12adbced9323087a362a92771c60ff5cafe902d7"
+  integrity sha512-lwlwGcMxUBoy//W6D1DCw+2q25w5Mfpe25FJKmhYR0umLr7Ii+2TLwiE8giMuFA97KNf6/9T2elLaeaNDoyKOw==
   dependencies:
-    "@reach/utils" "0.15.3"
-    "@reach/visually-hidden" "0.15.2"
+    "@reach/utils" "0.16.0"
+    "@reach/visually-hidden" "0.16.0"
     prop-types "^15.7.2"
     tslib "^2.3.0"
 
-"@reach/utils@0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.15.3.tgz#200f42adba9d1463b1c6a75ee2aaf9f0cba84f9d"
-  integrity sha512-HFyjw8LZ4/RRk5bcMpDAeEc3aOeLR/vWRDsljlE3cHI5GfFlZcG3DDLSW8C2ba74RCFp/4X3Nz0nOrd4JdkZ1w==
+"@reach/utils@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.16.0.tgz#5b0777cf16a7cab1ddd4728d5d02762df0ba84ce"
+  integrity sha512-PCggBet3qaQmwFNcmQ/GqHSefadAFyNCUekq9RrWoaU9hh/S4iaFgf2MBMdM47eQj5i/Bk0Mm07cP/XPFlkN+Q==
   dependencies:
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
 
-"@reach/visually-hidden@0.15.2":
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/@reach/visually-hidden/-/visually-hidden-0.15.2.tgz#07794cb53f4bd23a9452d53a0ad7778711ee323f"
-  integrity sha512-suDSCuKKuqiEB4UDgwWHbrPRxNwrusZ3ImXr85kfsQXGmKptMogaq22xoaHn32NC++lzZXxdWtAJriieszzFXw==
+"@reach/visually-hidden@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@reach/visually-hidden/-/visually-hidden-0.16.0.tgz#2a5e834af9e93c554065ff8cbb0907fbeb26ad02"
+  integrity sha512-IIayZ3jzJtI5KfcfRVtOMFkw2ef/1dMT8D9BUuFcU2ORZAWLNvnzj1oXNoIfABKl5wtsLjY6SGmkYQ+tMPN8TA==
   dependencies:
     prop-types "^15.7.2"
     tslib "^2.3.0"
