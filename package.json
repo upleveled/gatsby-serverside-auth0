@@ -35,6 +35,8 @@
   },
   "resolutions": {
     "@types/node": "17.0.0",
+    "@typescript-eslint/eslint-plugin": "5.8.0",
+    "@typescript-eslint/parser": "5.8.0",
     "eslint-plugin-react": "7.27.1"
   }
 }
